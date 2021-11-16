@@ -1199,6 +1199,32 @@ describe("recipe parser ita", () => {
       maxQty: 40,
     });
   });
+
+  describe("unit removal from the ingredient", () => {
+    it("40g Parmigiano reggiano DOP", () => {
+      expect(parse("40g Parmigiano reggiano DOP", "ita")).to.deep.equal({
+        quantity: 40,
+        unit: "grammo",
+        unitPlural: "grammi",
+        symbol: "g",
+        ingredient: "Parmigiano reggiano DOP",
+        minQty: 40,
+        maxQty: 40,
+      });
+    });
+
+    it("Parmigiano reggiano DOP 40g", () => {
+      expect(parse("Parmigiano reggiano DOP 40g", "ita")).to.deep.equal({
+        quantity: 40,
+        unit: "grammo",
+        unitPlural: "grammi",
+        symbol: "g",
+        ingredient: "Parmigiano reggiano DOP",
+        minQty: 40,
+        maxQty: 40,
+      });
+    });
+  });
 });
 
 /////

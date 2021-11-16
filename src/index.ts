@@ -130,12 +130,10 @@ export function parse(recipeString: string, language: string) {
   // remove unit from the ingredient if one was found and trim leading and trailing whitespace
 
   let ingredient = !!originalUnit
-    ? ` ${restOfIngredient}`.replace(` ${originalUnit}`, "").trim()
-    : ` ${restOfIngredient}`.replace(` ${unit}`, "").trim();
+    ? ` ${restOfIngredient} `.replace(` ${originalUnit}`, "").trim()
+    : ` ${restOfIngredient} `.replace(` ${unit}`, "").trim();
   ingredient = ingredient.split(".").join("").trim();
   let preposition = getPreposition(ingredient.split(" ")[0], language);
-
-  console.log("ingredient", ingredient);
 
   if (preposition) {
     let regex = new RegExp("^" + preposition);
